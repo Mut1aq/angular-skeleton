@@ -15,33 +15,33 @@ export class APIService {
     throw new Error(error?.error?.message);
   };
 
-  get = (url: string, params?: any): Observable<any> => {
+  get = <T>(url: string, params?: any): Observable<T> => {
     let httpParams = new HttpParams();
     for (const property in params) {
       httpParams = httpParams.set(property, params[property]);
     }
 
-    return this.http.get(`${environment.API}${url}`, { params: httpParams });
+    return this.http.get<T>(`${environment.API}${url}`, { params: httpParams });
   };
 
-  post = (url: string, body: any): Observable<any> => {
-    return this.http.post(`${environment.API}${url}`, body);
+  post = <T>(url: string, body: any): Observable<T> => {
+    return this.http.post<T>(`${environment.API}${url}`, body);
   };
 
-  patch = (url: string, body: any): Observable<any> => {
-    return this.http.patch(`${environment.API}${url}`, body);
+  patch = <T>(url: string, body: any): Observable<T> => {
+    return this.http.patch<T>(`${environment.API}${url}`, body);
   };
 
-  put = (url: string, body: any): Observable<any> => {
-    return this.http.put(`${environment.API}${url}`, body);
+  put = <T>(url: string, body: any): Observable<T> => {
+    return this.http.put<T>(`${environment.API}${url}`, body);
   };
 
-  delete = (url: string, params?: any): Observable<any> => {
+  delete = <T>(url: string, params?: any): Observable<T> => {
     let httpParams = new HttpParams();
     for (const property in params) {
       httpParams = httpParams.set(property, params[property]);
     }
-    return this.http.delete(`${environment.API}${url}`, {
+    return this.http.delete<T>(`${environment.API}${url}`, {
       params: httpParams,
     });
   };

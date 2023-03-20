@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslationService } from './core/services/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Anime SMA';
+  constructor(public readonly translationService: TranslationService) {}
 }

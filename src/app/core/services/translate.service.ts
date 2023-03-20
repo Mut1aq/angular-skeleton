@@ -4,8 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({
   providedIn: 'root',
 })
-
-export class Translate {
+export class TranslationService {
   constructor(private translate: TranslateService) {
     this.initLanguage();
   }
@@ -41,7 +40,6 @@ export class Translate {
       document.getElementsByTagName('html')[0].setAttribute('lang', lang);
       document.getElementsByTagName('html')[0].setAttribute('direction', 'rtl');
       document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
-
     }
   }
   getSelectedLanguage(): any {

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { MaterialComponentModule } from './material-components.module';
 
 @NgModule({
   declarations: [],
-  imports: [MaterialComponentModule],
-  exports: [MaterialComponentModule],
+  imports: [],
+  exports: [],
   bootstrap: [],
 })
 export class SharedComponentsModule {}

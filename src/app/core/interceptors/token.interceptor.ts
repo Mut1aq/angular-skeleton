@@ -4,23 +4,23 @@ import {
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
+  HttpStatusCode,
+  HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { APIService } from '../services/api.service';
-import { ToastService } from '../services/toast.service';
 
-@Injectable()
-export class HttpTokenInterceptor implements HttpInterceptor {
+@Injectable({
+  providedIn: 'root',
+})
+export class HttpRequestInterceptor implements HttpInterceptor {
   requestCount: number = 0;
   constructor(
-    private api: APIService,
-    private router: Router,
-    private translateService: TranslateService,
-    private toastService: ToastService
+    private readonly api: APIService,
+    private readonly router: Router
   ) {}
 
   intercept(
@@ -28,34 +28,28 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let request;
-    const currentLang = localStorage.getItem('language') || 'en';
     if (this.requestCount === 0) {
       this.api.loading$.next(true);
     }
     this.requestCount++;
     const headersConfig = {
       Accept: 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-      'Accept-Language': currentLang,
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Accept-Language': localStorage.getItem('language') ?? 'en',
     };
-
-    request = req.clone({ setHeaders: headersConfig }); //, withCredentials: true
-
+    request = req.clone({ setHeaders: headersConfig });
     return next.handle(request).pipe(
-      /**
-       * Using `catchError` from RxJS to catch all errors including 401.
-       * With `tap`, the 401 errors are not caught.
-       */
       catchError((err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            this.toastService._onApiError;
-            this.router.navigateByUrl('');
-          }
+        if (
+          (err instanceof HttpErrorResponse &&
+            err.status === HttpStatusCode.Unauthorized) ||
+          err.status === HttpStatusCode.Forbidden
+        ) {
+          this.router.navigate(['auth/login']);
         }
-        // Returning `of(err)` will not throw a new error, hence not reaching the `error` callbacks in `subscribe`.
-        // Using `throwError` will make sure that the error is propagated to the `error` callbacks in `subscribe`.
-        return throwError(err);
+        debugger;
+        const error = new Error(err);
+        return throwError(() => error);
       }),
       finalize(() => {
         this.requestCount--;
@@ -66,3 +60,8 @@ export class HttpTokenInterceptor implements HttpInterceptor {
     );
   }
 }
+export const HttpRequestInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: HttpRequestInterceptor,
+  multi: true,
+};

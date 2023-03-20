@@ -4,24 +4,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedComponentsModule } from './views/shared/components/components.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { CoreModule } from './core/core.module';
+import { BaseComponent } from './views/base/base.component';
+import { LayoutModule } from './views/shared/layout/layout.module';
+import { HttpClientModule } from '@angular/common/http';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BaseComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedComponentsModule,
+    CoreModule,
+    LayoutModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
@@ -36,7 +40,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    CoreModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
