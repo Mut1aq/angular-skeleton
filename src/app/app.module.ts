@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { BaseComponent } from './views/base/base.component';
 import { LayoutModule } from './views/shared/layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -39,6 +40,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+    }),
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      closeButton: true,
+      progressBar: true,
     }),
   ],
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],

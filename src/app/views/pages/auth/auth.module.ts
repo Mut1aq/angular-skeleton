@@ -6,6 +6,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslationModule } from '../../shared/modules/translation.module';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { SessionService } from 'src/app/core/services/session.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 @NgModule({
   declarations: [LoginComponent, AuthComponent],
   imports: [
@@ -33,5 +36,6 @@ import { TranslationModule } from '../../shared/modules/translation.module';
       },
     ]),
   ],
+  providers: [AuthService, SessionService, ToastService],
 })
 export class AuthModule {}

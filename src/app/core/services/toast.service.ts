@@ -12,20 +12,13 @@ export class ToastService {
     private readonly translate: TranslateService
   ) {}
 
-  toastrOptions = {
-    timeOut: 1000,
-    closeButton: true,
-    progressBar: true,
-  };
-
   showInfo(description: string) {
     let translationSubscriber$ = this.translate
       .get('common.info')
       .subscribe((_: string) => {
         this.toastrService.info(
           description,
-          this.translate.instant('common.info'),
-          this.toastrOptions
+          this.translate.instant('common.info')
         );
       });
     translationSubscriber$.unsubscribe();
@@ -37,8 +30,7 @@ export class ToastService {
       .subscribe((_: string) => {
         this.toastrService.success(
           description,
-          this.translate.instant('common.success'),
-          this.toastrOptions
+          this.translate.instant('common.success')
         );
       });
     translationSubscriber$.unsubscribe();
@@ -50,8 +42,7 @@ export class ToastService {
       .subscribe((_: string) => {
         this.toastrService.warning(
           description,
-          this.translate.instant('common.warning'),
-          this.toastrOptions
+          this.translate.instant('common.warning')
         );
       });
     translationSubscriber$.unsubscribe();
@@ -63,8 +54,7 @@ export class ToastService {
       .subscribe((_: string) => {
         this.toastrService.error(
           description,
-          this.translate.instant('common.error'),
-          this.toastrOptions
+          this.translate.instant('common.error')
         );
       });
     translationSubscriber$.unsubscribe();

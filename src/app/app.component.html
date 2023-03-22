@@ -1,4 +1,7 @@
-<app-side-menu (onToggleSideNav)="onToggleSideNav($event)"></app-side-menu>
+<ng-container *ngIf="isAuthPage"
+  ><app-side-menu (onToggleSideNav)="onToggleSideNav($event)"></app-side-menu
+></ng-container>
+
 <app-base
   [collapsed]="isSideNavCollapsed"
   [screenWidth]="screenWidth"
