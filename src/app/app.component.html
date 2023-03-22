@@ -1,6 +1,5 @@
-<div
-  class="h-100"
-  [dir]="translationService.getSelectedLanguage() != 'en' ? 'rtl' : 'ltr'"
->
-  <router-outlet></router-outlet>
-</div>
+<app-side-menu (onToggleSideNav)="onToggleSideNav($event)"></app-side-menu>
+<app-base
+  [collapsed]="isSideNavCollapsed"
+  [screenWidth]="screenWidth"
+></app-base>

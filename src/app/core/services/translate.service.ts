@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationService {
-  constructor(private translate: TranslateService) {
+  constructor(
+    private translate: TranslateService,
+    @Inject(PLATFORM_ID) private platformID: Object
+  ) {
     this.initLanguage();
   }
 
@@ -23,14 +27,16 @@ export class TranslationService {
     this.translate.setDefaultLang('en');
     this.translate.use('en');
   }
-  setLanguage(lang?: string) {
+  setLanguage(lang: string) {
     if (!lang) {
-      lang =
-        localStorage.getItem('language') || this.translate.getDefaultLang();
+      if (isPlatformBrowser(this.platformID))
+        lang =
+          localStorage.getItem('language') || this.translate.getDefaultLang();
     }
 
     this.translate.use(lang);
-    localStorage.setItem('language', lang);
+    if (isPlatformBrowser(this.platformID))
+      localStorage.setItem('language', lang);
 
     if (lang !== 'ar') {
       document.getElementsByTagName('html')[0].setAttribute('lang', lang);
@@ -43,6 +49,9 @@ export class TranslationService {
     }
   }
   getSelectedLanguage(): any {
-    return localStorage.getItem('language') || this.translate.getDefaultLang();
+    if (isPlatformBrowser(this.platformID))
+      return (
+        localStorage.getItem('language') || this.translate.getDefaultLang()
+      );
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslationService } from './core/services/translate.service';
+import { SideNavToggle } from './core/shared/interfaces/app/side-nav-toggle.interface';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +7,11 @@ import { TranslationService } from './core/services/translate.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public readonly translationService: TranslationService) {}
+  isSideNavCollapsed = false;
+  screenWidth = 0;
+
+  onToggleSideNav(data: SideNavToggle): void {
+    this.screenWidth = data.screenWidth;
+    this.isSideNavCollapsed = data.collapsed;
+  }
 }

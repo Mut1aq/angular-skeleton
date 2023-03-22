@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -7,7 +8,7 @@ import {
   HttpStatusCode,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
@@ -20,7 +21,8 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   requestCount: number = 0;
   constructor(
     private readonly api: APIService,
-    private readonly router: Router
+    private readonly router: Router,
+    @Inject(PLATFORM_ID) private readonly platformID: Object
   ) {}
 
   intercept(
@@ -28,15 +30,18 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let request;
+    let headersConfig;
+
     if (this.requestCount === 0) {
       this.api.loading$.next(true);
     }
     this.requestCount++;
-    const headersConfig = {
-      Accept: 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      'Accept-Language': localStorage.getItem('language') ?? 'en',
-    };
+    if (isPlatformBrowser(this.platformID))
+      headersConfig = {
+        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        'Accept-Language': localStorage.getItem('language') ?? 'en',
+      };
     request = req.clone({ setHeaders: headersConfig });
     return next.handle(request).pipe(
       catchError((err) => {
@@ -47,9 +52,8 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         ) {
           this.router.navigate(['auth/login']);
         }
-        debugger;
-        const error = new Error(err);
-        return throwError(() => error);
+        console.log(err);
+        return throwError(() => new Error(err));
       }),
       finalize(() => {
         this.requestCount--;

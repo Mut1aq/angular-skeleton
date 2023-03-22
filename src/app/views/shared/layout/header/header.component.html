@@ -1,1 +1,36 @@
-<p>header works!</p>
+<div class="head" [ngClass]="getHeadClass()">
+  <div class="head-content">
+    <div class="head-content-left">
+      <div class="search-continer">
+        <div class="normal-search">
+          <input
+            type="search"
+            class="search"
+            name=""
+            id=""
+            placeholder="Search...."
+          />
+        </div>
+      </div>
+    </div>
+    <div class="head-content-right">
+      <div class="head-menu">
+        <div class="head-menu-item">
+          <button class="head-menu-item-btn ripple">
+            <img src="" class="flag" alt="flag" />
+          </button>
+        </div>
+        <div class="head-menu-item">
+          <button class="head-menu-item-btn ripple">
+            <i class="bx bx-expand"></i>
+          </button>
+        </div>
+        <div class="head-menu-item">
+          <button class="head-menu-item-btn ripple">
+            <i class="bx bxs-message-rounded-add"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,10 @@
 {
-  "name": "anime-sma",
+  "name": "angular-skeleton",
   "version": "0.0.0",
+  "author": "Mutlaq Alsadeed",
+  "engines": {
+    "node": "18.15.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,6 +27,10 @@
     "@auth0/angular-jwt": "^5.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "bootstrap": "^5.2.3",
+    "boxicons": "^2.1.4",
+    "ngx-bootstrap": "^6.2.0",
+    "ngx-infinite-scroll": "^15.0.0",
     "ngx-toastr": "^16.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

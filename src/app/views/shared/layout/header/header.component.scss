@@ -1,0 +1,76 @@
+@use "src/assets/styles/colors" as colors;
+
+.nav-bar {
+  background-color: #11101d;
+  .header-right {
+    color: colors.$white;
+  }
+}
+a {
+  color: colors.$white;
+  text-decoration: none;
+}
+
+mat-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-center {
+    color: colors.$white;
+    text-align: center;
+    div {
+      display: inline-block;
+    }
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
+  button {
+    outline: none;
+  }
+  .no-outline {
+    outline: none !important;
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: colors.$white;
+  }
+  .no-outline:hover {
+    color: colors.$white;
+  }
+
+  @media (max-width: 600px) {
+    .header-center {
+      display: flex;
+    }
+  }
+}
+@media (min-width: 420px) {
+  .nav-bar {
+    display: none;
+  }
+}
+
+.head {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+  z-index: 1;
+  transition: all 0.5s ease;
+  background-color: #f4f7fa;
+  padding: 1rem 1.5rem 0 1.5rem;
+
+  position: fixed;
+  top: 0;
+}
+
+.head-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+
+.head-md-screen {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+}
