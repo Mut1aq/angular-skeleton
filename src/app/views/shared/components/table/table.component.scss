@@ -32,7 +32,7 @@
     th {
       color: colors.$black;
       border-bottom: 1px solid colors.$black;
-      .mat-sort-header-content {
+      .mat-mdc-sort-header-content {
         font-size: 100% !important;
       }
     }
@@ -40,7 +40,7 @@
       border: none !important;
     }
 
-    .mat-row {
+    .mat-mdc-row {
       transition: 0.2s;
 
       &:nth-child(odd) {
@@ -150,7 +150,7 @@
       margin-top: 24px;
     }
 
-    .mat-form-field {
+    .mat-mdc-form-field {
       width: 45% !important;
     }
 
@@ -198,7 +198,7 @@
   .table-body {
     padding: 0rem 2rem 2rem;
 
-    & .mat-form-field {
+    & .mat-mdc-form-field {
       width: 100% !important;
     }
   }

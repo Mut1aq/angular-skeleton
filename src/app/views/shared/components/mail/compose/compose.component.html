@@ -39,7 +39,12 @@
             </div>
 
             <div class="button-row">
-              <button mat-raised-button type="submit" class="send-button">
+              <button
+                mat-raised-button
+                type="submit"
+                class="send-button"
+                [disabled]="messageForm.invalid"
+              >
                 <span>Send</span>
                 <mat-icon>send</mat-icon>
               </button>

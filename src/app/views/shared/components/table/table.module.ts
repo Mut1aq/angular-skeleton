@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -23,7 +24,14 @@ import { MatNativeDateModule } from '@angular/material/core'; //FROM ANGULAR COR
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: TableComponent
+      },
+
+    ]),
   ],
   exports: [TableComponent],
 })
-export class TableModule {}
+export class TableModule { }

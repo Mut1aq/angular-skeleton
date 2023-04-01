@@ -20,7 +20,6 @@
         display: flex;
         justify-content: flex-end;
         margin-top: 1.5rem;
-
         .send-button {
           display: flex;
           align-items: center;
@@ -28,9 +27,11 @@
           background-color: #263238;
           color: #fff;
           padding: 0.5rem 1rem;
-
           mat-icon {
             margin-left: 0.5rem;
+          }
+          &:disabled {
+            cursor: not-allowed;
           }
         }
       }

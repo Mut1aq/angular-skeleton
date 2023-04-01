@@ -1,18 +1,24 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { QuillEditorComponent } from 'ngx-quill'
+import { MessageForm, messageFormControls } from '../interfaces/message-form.interface';
 
+export interface Recipient {
+  name: string,
+  id: number
+}
 @Component({
   selector: 'app-compose',
   templateUrl: './compose.component.html',
   styleUrls: ['./compose.component.scss']
 })
+
 export class ComposeComponent {
-  messageForm!: FormGroup;
+  messageForm!: FormGroup<MessageForm>;
   @ViewChild('editor', {
     static: true
   }) editor!: QuillEditorComponent
-  availableRecipients =
+  availableRecipients: Recipient[] =
     [
       {
         name: "jamil alhunity",
@@ -24,15 +30,16 @@ export class ComposeComponent {
       }
     ];
 
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private readonly fb: NonNullableFormBuilder) { }
 
   ngOnInit() {
-    this.messageForm = this.formBuilder.group({
-      recipients: ['', Validators.required],
-      subject: ['', Validators.required],
-      body: ['']
-    });
+    this.initComposeForm()
+  }
+
+  initComposeForm(): void {
+    this.messageForm = this.fb.group({
+      ...messageFormControls
+    })
   }
 
   onSubmit(): void {
