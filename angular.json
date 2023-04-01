@@ -29,7 +29,10 @@
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/boxicons/css/boxicons.min.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "quill"
+            ]
           },
           "configurations": {
             "production": {

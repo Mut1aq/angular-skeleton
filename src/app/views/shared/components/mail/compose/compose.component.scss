@@ -1,0 +1,39 @@
+.container {
+  .message-card {
+    .form-container {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        label {
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+
+        mat-form-field {
+          margin-top: 0.5rem;
+        }
+      }
+
+      .button-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1.5rem;
+
+        .send-button {
+          display: flex;
+          align-items: center;
+          border-radius: 0.25rem;
+          background-color: #263238;
+          color: #fff;
+          padding: 0.5rem 1rem;
+
+          mat-icon {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

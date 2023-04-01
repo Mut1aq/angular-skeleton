@@ -55,12 +55,12 @@
   :host ::ng-deep.mat-paginator .mat-paginator-container {
     justify-content: center;
 
-    .mat-paginator-page-size {
+    .mat-mdc-paginator-page-size {
       justify-content: end;
     }
-    .mat-paginator-range-actions {
+    .mat-mdc-paginator-range-actions {
       justify-content: center !important;
-      .mat-paginator-range-label {
+      .mat-mdc-paginator-range-label {
         display: none;
       }
     }
@@ -70,12 +70,12 @@
   }
 
   @media screen and (max-width: 960px) {
-    .mat-elevation-z8 {
+    .mat-mdc-elevation-z8 {
       background: transparent;
       box-shadow: none;
     }
 
-    .mat-header-row {
+    .mat-mdc-header-row {
       display: none;
     }
 
@@ -84,13 +84,13 @@
       width: 100%;
     }
 
-    .mat-table {
+    .mat-mdc-table {
       background: transparent;
       * {
         box-sizing: border-box;
       }
 
-      .mat-row {
+      .mat-mdc-row {
         display: inline-block;
         overflow: hidden;
         height: auto;
@@ -102,7 +102,7 @@
         margin: 0.5rem;
       }
 
-      .mat-cell {
+      .mat-mdc-cell {
         display: block;
         width: 100%;
         padding: 0 16px;
@@ -133,7 +133,7 @@
         }
       }
 
-      .mat-column-star {
+      .mat-mdc-column-star {
         width: auto;
         padding: 8px 0 0 !important;
         margin: 0;
@@ -146,7 +146,7 @@
       }
     }
 
-    .mat-paginator {
+    .mat-mdc-paginator {
       margin-top: 24px;
     }
 

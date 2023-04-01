@@ -52,4 +52,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
