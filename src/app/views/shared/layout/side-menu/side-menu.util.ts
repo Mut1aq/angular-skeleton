@@ -26,9 +26,21 @@ export const navbarData: NavbarData[] = [
     label: 'Dashboard',
   },
   {
-    routeLink: 'email-service',
+    routeLink: 'mail',
     icon: 'bx bx-envelope',
-    label: 'Email Service',
+    label: 'mail',
+    items: [
+      {
+        routeLink: 'mail/compose',
+        icon: 'message-alt-add',
+        label: 'compose',
+      },
+      {
+        routeLink: 'mail/sent',
+        icon: 'bx bx-send',
+        label: 'sent',
+      },
+    ],
   },
 
   {

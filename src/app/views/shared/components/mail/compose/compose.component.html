@@ -1,0 +1,52 @@
+<section class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card message-card">
+        <div class="card-body">
+          <form
+            [formGroup]="messageForm"
+            (ngSubmit)="onSubmit()"
+            class="form-container"
+          >
+            <div class="form-group">
+              <label for="recipients">Recipients</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-select formControlName="recipients" multiple>
+                  <mat-option
+                    *ngFor="let recipient of availableRecipients"
+                    [value]="recipient['id']"
+                  >
+                    {{ recipient["name"] }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <mat-form-field appearance="outline" class="w-100">
+                <input matInput formControlName="subject" />
+              </mat-form-field>
+            </div>
+
+            <div class="form-group">
+              <label for="body">Body</label>
+              <quill-editor
+                formControlName="body"
+                #editor
+                class="w-100"
+              ></quill-editor>
+            </div>
+
+            <div class="button-row">
+              <button mat-raised-button type="submit" class="send-button">
+                <span>Send</span>
+                <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
