@@ -1,3 +1,5 @@
+@use "src/assets/styles/colors" as colors;
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
@@ -41,15 +43,111 @@ $angular-skeleton-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
+//font, En
+@font-face {
+  font-family: myfont;
+  src: url(../src/assets/fonts/Georama-Regular.eot);
+}
+
+@font-face {
+  font-family: myfont;
+  src: url(../src/assets/fonts/Georama-Regular.otf);
+}
+
+@font-face {
+  font-family: myfont-bold;
+  src: url(../src/assets/fonts/Georama-Bold.otf);
+}
+
+@font-face {
+  font-family: myfont-bold;
+  src: url(../src/assets/fonts/Georama-Bold.otf);
+}
+
+//Font, Ar
+@font-face {
+  font-family: myfont-ar;
+  src: url(../src/assets/fonts/NotoSansArabic-Regular.ttf);
+}
+
+@font-face {
+  font-family: myfont-ar-bold;
+  src: url(../src/assets/fonts/NotoSansArabic-Black.ttf);
+}
+
+*:not(.material-icons, .pi, .mat-icon) {
+  font-family: myfont, myfont-ar, "Helvetica Neue", sans-serif !important;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+  font-size: 16px;
+
+  &:lang(ar) {
+    letter-spacing: unset;
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  background-color: #f9fdff;
+}
+
+a {
+  text-decoration: solid;
+}
+
 html,
 body {
   height: 100%;
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+.tabs-container {
+  .mat-tab-labels {
+    justify-content: space-between !important;
+  }
+
+  .mat-tab-body-wrapper {
+    height: 100%;
+  }
+
+  .mat-tab-group.mat-primary {
+    height: 100%;
+  }
 }
 
-.body-background {
-  background-color: #f9fdff;
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: colors.$main-color;
+}
+
+//radio button
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: colors.$main-color;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: colors.$main-color;
+}
+
+//scroll bar
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cbcbcb;
 }

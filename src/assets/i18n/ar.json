@@ -1,28 +1,4 @@
 {
-  "header": {
-    "sideNav": {
-      "options": {
-        "profile": "الصفحة الشخصية",
-        "logout": "تسجيل الخروج",
-        "dashboard": "لوحة التحكم",
-        "feed": "الصفحة الرئيسية",
-        "settings": "الاعدادات",
-        "admin": "الادمن",
-        "ads": "الاعلانات"
-      }
-    }
-  },
-  "footer": {
-    "about": "حول",
-    "quickLinks": {
-      "quickLinks": "روابط سريعة",
-      "profile": "الصفحة الشخصية",
-      "logout": "تسجيل الخروج",
-      "dashboard": "لوحة التحكم",
-      "feed": "الصفحة الرئيسية",
-      "settings": "الاعدادات"
-    }
-  },
   "login": {
     "headerText": "تسجيل الدخول هنا باستخدام البريد الإلكتروني وكلمة المرور",
     "login": "تسجيل الدخول",
@@ -48,12 +24,19 @@
     "url": "يجب ان يكون رابط صحيح {{ value }}",
     "minLength": "يجب ان يكون {{value}} اكبر من {{length}}",
     "maxLength": "يجب ان يكون {{value}} اصغر من {{length}}",
-    "email": "يجب ان يكون الايميل صحيح"
+    "email": "يجب ان يكون الايميل صحيح",
+    "periodStart": "بدايه الفتره",
+    "periodEnd": "نهايه الفتره",
+    "dateHint": "شهر-يوم-سنه",
+    "startDate": "تاريخ البدايه",
+    "endDate": "تاريخ النهايه",
+    "invalidStartDate": "تاريخ البدايه غير صحيح",
+    "invalidEndDate": "تاريخ النهايه غير صحيح"
   },
   "common": {
     "edit": "تعديل",
     "area": "المنطقه",
-    "addAd": "اضافه اعلان",
+    "addAd": "اضافة اعلان",
     "startDate": "تاريخ البدايه",
     "endDate": "تاريخ النهايه",
     "error": "حدث خطأ",
@@ -73,67 +56,21 @@
     "address": "العنوان",
     "workingHours": "ساعات العمل",
     "workingDays": "ايام العمل",
-    "contact": {
-      "contact": "طرق التواصل",
-      "whatsApp": "واتس اب",
-      "facebook": "فيسبوك",
-      "instagram": "انستاقرام",
-      "twitter": "تويتر",
-      "phoneNumber": "رقم الهاتف"
-    },
     "promoCode": "رمز ترويجي",
     "promoInfo": "معلومات الترويج",
-
     "createdAt": "تاريخ التسجيل",
     "filter": "تصفية النتائج",
     "reset": "اعاده",
     "periodStart": "بدايه الفتره",
     "periodEnd": "نهايه الفتره",
-    "shifacom": "شفائكم",
-    "entities": {
-      "admin": "ادمن",
-      "user": "مستخدم"
-    },
     "dragAndDrop": "سحب وإسقاط",
     "browseFiles": "تصفح ملفات",
     "fileName": "الاسم",
     "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا السجل",
     "ok": "نعم"
   },
-  "dashboardMetrics": {
-    "registeredUsers": "عدد المستخدمين",
-    "usersSinceLastWeek": "المستخدمين الجدد من الاسبوع الماضي",
-    "categories": "الفئات",
-    "subCategories": "الفئات الداخلية",
-    "profiles": "الملفات الشخصية",
-    "edit": "تعديل",
-    "add": "اضافه",
-    "delete": "حذف"
-  },
   "buttons": {
     "submit": "ارسال",
     "post": "نشر"
-  },
-  "categories": {
-    "profile": "الصفحه الشخصيه",
-    "showProfiles": "إظهار الملفات الشخصية",
-    "ad": "اعلان",
-    "city": "المدينه",
-    "area": "المنطقه",
-    "subCategory": "فئة فرعية",
-    "addCategory": "اضافه الفئه",
-    "editCategory": "تعديل الفئه",
-    "addProfile": "اضافه ملف شخصي",
-    "editProfile": "تعدبل ملف شخصي",
-    "categoryName": "اسم الفئه"
-  },
-  "ads": {
-    "addAd": "اضافة اعلان",
-    "editAd": "تعديل اعلان",
-    "adName": "اسم الاعلان",
-    "adDescription": "وصف الاعلان",
-    "expiryDate": "تاريخ الانتهاء",
-    "allAds": "جميع الاعلانات",
-    "isPaid": "مدفوع"
   }
 }

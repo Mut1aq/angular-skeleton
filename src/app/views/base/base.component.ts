@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslationService } from 'src/app/core/services/translate.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { TranslationService } from 'src/app/core/services/translate.service';
   styleUrls: ['./base.component.scss'],
 })
 export class BaseComponent {
-  constructor(public readonly translationService: TranslationService) {}
+  constructor(
+    public readonly translationService: TranslationService,
+    public router: Router
+  ) {}
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;

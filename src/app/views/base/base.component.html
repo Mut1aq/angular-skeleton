@@ -1,12 +1,14 @@
 <div
-  class="body"
-  [ngClass]="getBodyClass()"
+  [ngClass]="{
+    body: !(this.router.url === '/auth/login'),
+    '{{getBodyClass()}}': true
+  }"
   [dir]="translationService.getSelectedLanguage() != 'en' ? 'rtl' : 'ltr'"
 >
   <header>
     <app-header></app-header>
   </header>
   <main>
-    <router-outlet></router-outlet>
+    <app-table></app-table>
   </main>
 </div>

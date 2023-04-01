@@ -23,14 +23,13 @@ import { ToastService } from 'src/app/core/services/toast.service';
         component: AuthComponent,
         children: [
           {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'login',
-          },
-          {
             path: 'login',
             component: LoginComponent,
-            canActivate: [],
+          },
+          {
+            path: '',
+            redirectTo: 'login',
+            pathMatch: 'full',
           },
         ],
       },

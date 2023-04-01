@@ -12,14 +12,8 @@ export class AppComponent implements OnInit {
   screenWidth = 0;
   isAuthPage!: boolean;
 
-  constructor(private router: Router) {}
-  ngOnInit(): void {
-    this.router.events
-      .subscribe((_) => {
-        this.isAuthPage = this.router.url === '/auth/login' ? true : false;
-      })
-      .unsubscribe();
-  }
+  constructor(public router: Router) {}
+  ngOnInit(): void {}
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;

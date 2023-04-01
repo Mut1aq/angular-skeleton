@@ -14,6 +14,7 @@ import { BaseComponent } from './views/base/base.component';
 import { LayoutModule } from './views/shared/layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { TableModule } from './views/shared/components/table/table.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -27,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     CoreModule,
     LayoutModule,
+    TableModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

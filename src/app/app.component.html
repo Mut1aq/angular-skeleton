@@ -1,4 +1,4 @@
-<ng-container
+<ng-container *ngIf="!(this.router.url === '/auth/login')"
   ><app-side-menu (onToggleSideNav)="onToggleSideNav($event)"></app-side-menu
 ></ng-container>
 

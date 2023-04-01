@@ -1,0 +1,91 @@
+<div class="table-body">
+  <div class="container">
+    <fieldset class="filter-container">
+      <legend>{{ "common.filter" | translate }}</legend>
+      <form class="example-form" [formGroup]="filterForm">
+        <mat-form-field appearance="outline">
+          <mat-label
+            >{{ "common.periodStart" | translate }} -
+            {{ "common.periodEnd" | translate }}</mat-label
+          >
+          <mat-date-range-input [rangePicker]="picker">
+            <input
+              matStartDate
+              formControlName="startDate"
+              placeholder="{{ 'common.startDate' | translate }}"
+            />
+            <input
+              matEndDate
+              formControlName="endDate"
+              placeholder="{{ 'validation.endDate' | translate }}"
+            />
+          </mat-date-range-input>
+          <mat-hint>{{ "validation.dateHint" | translate }}</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+
+          <ng-container *ngIf="startDate?.hasError('matStartDateInvalid')">
+            <mat-error>{{
+              "validation.invalidStartDate" | translate
+            }}</mat-error></ng-container
+          >
+
+          <ng-container *ngIf="endDate?.hasError('matEndDateInvalid')"
+            ><mat-error>{{
+              "validation.invalidEndDate" | translate
+            }}</mat-error></ng-container
+          >
+        </mat-form-field>
+      </form>
+    </fieldset>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- col1 Column -->
+      <ng-container matColumnDef="col1" class="table-col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Column 1</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.col1 }}
+        </td>
+      </ng-container>
+
+      <!-- col2 Column -->
+      <ng-container matColumnDef="col2" class="table-col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Column 2</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.col2 }}
+        </td>
+      </ng-container>
+
+      <!-- col3 Column -->
+      <ng-container matColumnDef="col3" class="table-col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Column 3</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.col3 }}
+        </td>
+      </ng-container>
+
+      <!-- date Column -->
+      <ng-container matColumnDef="date" class="table-col">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "common.requestDate" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.date }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of services"
+    ></mat-paginator>
+  </div>
+</div>

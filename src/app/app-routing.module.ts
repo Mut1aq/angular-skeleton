@@ -7,17 +7,12 @@ const routes: Routes = [
     path: '',
     component: BaseComponent,
     children: [
-      // {
-      //   path: '',
-      //   loadChildren: () =>
-      //     import('./views/pages/home/home.module').then((m) => m.HomeModule),
-      // },
+      {
+        path: 'auth',
+        loadChildren: () =>
+          import('./views/pages/auth/auth.module').then((m) => m.AuthModule),
+      },
     ],
-  },
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('./views/pages/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 
