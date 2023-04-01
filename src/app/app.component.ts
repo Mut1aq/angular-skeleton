@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { SideNavToggle } from './core/shared/interfaces/app/side-nav-toggle.interface';
-
+import { NavigationEnd, Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,10 +9,20 @@ import { SideNavToggle } from './core/shared/interfaces/app/side-nav-toggle.inte
 export class AppComponent implements OnInit {
   isSideNavCollapsed = false;
   screenWidth = 0;
-  isAuthPage!: boolean;
+  showSideMenu: boolean = false;
 
-  constructor(public router: Router) {}
-  ngOnInit(): void {}
+  constructor(private router: Router) { }
+  ngOnInit(): void {
+    this.listenToRouteEvents();
+  }
+
+  listenToRouteEvents(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showSideMenu = event.url !== '/auth/login';
+      }
+    });
+  }
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
