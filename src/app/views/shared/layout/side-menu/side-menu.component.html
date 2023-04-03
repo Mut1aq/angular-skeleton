@@ -1,6 +1,6 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
-    <button class="logo" (click)="toggleCollapse()">A</button>
+    <button class="logo" (click)="toggleCollapse()" [hidden]="collapsed"><mat-icon>menu</mat-icon></button>
     <div class="logo-text" @fadeInOut *ngIf="collapsed">Angular</div>
     <button
       class="btn-close"
