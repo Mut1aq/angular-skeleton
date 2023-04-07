@@ -1,13 +1,9 @@
-.body {
-  width: calc(100% - 5rem);
-  height: 100vh;
-  margin-left: 5rem;
+.container {
+  height: 100%;
+  margin: 1.5rem auto;
   z-index: 0;
   position: relative;
-  top: 0;
   transition: all 0.5s ease;
-  background: #f4f7fa;
-  padding: 3rem;
 }
 
 .body-trimmed {
@@ -18,4 +14,10 @@
 .body-md-screen {
   width: calc(100% - 5rem);
   margin-left: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 1rem 1rem;
+  }
 }
