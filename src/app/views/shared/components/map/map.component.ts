@@ -1,8 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import { ToastService } from 'src/app/core/services/toast.service';
-import { GEOLayers } from './interfaces/geo-layers.interface';
-import { MapService } from './map.service';
 
 @Component({
   selector: 'app-map',
@@ -10,18 +7,9 @@ import { MapService } from './map.service';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements AfterViewInit, OnInit {
-  constructor(
-    private readonly mapService: MapService,
-    private readonly toast: ToastService
-  ) {}
+  constructor() {}
 
   map!: L.Map;
-
-  public showGeoFilter = true;
-
-  toggleGeoFilter(): void {
-    this.showGeoFilter = !this.showGeoFilter;
-  }
 
   private initMap(): void {
     const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -64,14 +52,5 @@ export class MapComponent implements AfterViewInit, OnInit {
     L.geoJSON().addTo(this.map);
   }
 
-  ngOnInit(): void {
-    this.mapService.getGEOLayers().subscribe({
-      next: (geoLayers: GEOLayers) => {
-        console.log(geoLayers);
-      },
-      error: (err) => {
-        this.toast._onApiError(err);
-      },
-    });
-  }
+  ngOnInit(): void {}
 }

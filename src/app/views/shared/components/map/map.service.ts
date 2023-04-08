@@ -10,7 +10,7 @@ import { GEOLayers } from './interfaces/geo-layers.interface';
 export class MapService {
   constructor(private readonly api: APIService) {}
 
-  getGEOLayers(): Observable<GEOLayers> {
-    return this.api.get<GEOLayers>(Constants.MAPS_PATH + 'geo-layers');
+  getGEOLayers(): Observable<GEOLayers[]> {
+    return this.api.get<GEOLayers[]>(Constants.MAPS_PATH + 'geo-layers');
   }
 }

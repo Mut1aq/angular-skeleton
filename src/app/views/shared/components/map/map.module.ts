@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapComponent } from './map.component';
 import { RouterModule } from '@angular/router';
-import { GeoFilterSidePanelComponent } from './geo-filter-side-panel/geo-filter-side-panel.component';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatSelectModule } from '@angular/material/select';
+import { GeoFilterComponent } from './geo-filter/geo-filter.component';
 
 @NgModule({
-  declarations: [MapComponent, GeoFilterSidePanelComponent],
+  declarations: [MapComponent, GeoFilterComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -16,8 +14,6 @@ import { MatSelectModule } from '@angular/material/select';
         component: MapComponent,
       },
     ]),
-    MatSidenavModule,
-    MatSelectModule,
   ],
 })
 export class MapModule {}

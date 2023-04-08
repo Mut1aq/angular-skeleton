@@ -1,35 +1,6 @@
 <div class="map-container">
   <div class="map-frame">
-    <div id="map" [ngClass]="{ shifted: showGeoFilter }"></div>
-    <button
-      class="toggle-btn"
-      (click)="toggleGeoFilter()"
-      [ngClass]="{ hidden: showGeoFilter }"
-    >
-      Toggle Geo Filter
-    </button>
+    <div id="map"></div>
   </div>
 </div>
-
-<div id="geo-filter" [ngClass]="{ hidden: !showGeoFilter }">
-  <div class="geo-filter-header">
-    <button class="toggle-btn" (click)="toggleGeoFilter()">
-      Close Geo Filter
-    </button>
-  </div>
-  <div class="geo-filter-body">
-    <div class="geo-filter-select">
-      <select>
-        <option value="city">City</option>
-        <option value="subcity">Subcity</option>
-      </select>
-    </div>
-    <div class="geo-filter-select">
-      <select>
-        <option value="new-york">New York</option>
-        <option value="los-angeles">Los Angeles</option>
-        <option value="chicago">Chicago</option>
-      </select>
-    </div>
-  </div>
-</div>
+<app-geo-filter></app-geo-filter>
