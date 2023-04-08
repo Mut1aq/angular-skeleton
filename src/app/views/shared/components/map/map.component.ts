@@ -7,7 +7,8 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements AfterViewInit, OnInit {
-  constructor() {}
+  showGeoFilter: boolean = false;
+  constructor() { }
 
   map!: L.Map;
 
@@ -52,5 +53,10 @@ export class MapComponent implements AfterViewInit, OnInit {
     L.geoJSON().addTo(this.map);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+
+  toggleGeoFilter(): void {
+    this.showGeoFilter = !this.showGeoFilter;
+  }
 }

@@ -1,7 +1,7 @@
 @use "src/assets/styles/colors" as colors;
 
 .sidenav {
-  background: colors.$light-black;;
+  background: colors.$light-black;
   transition: all 0.5s ease;
   position: fixed;
   z-index: 1;

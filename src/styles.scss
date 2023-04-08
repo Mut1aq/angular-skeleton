@@ -7,7 +7,7 @@
 
 $angular-skeleton-typography: mat.define-typography-config($font-family:'Bangers, cursive');
 
- 
+
 $angular-skeleton-primary: mat.define-palette(mat.$indigo-palette);
 $angular-skeleton-accent: mat.define-palette(
   mat.$pink-palette,
@@ -18,7 +18,7 @@ $angular-skeleton-accent: mat.define-palette(
 
  $angular-skeleton-warn: mat.define-palette(mat.$red-palette);
 
- 
+
 $angular-skeleton-theme: mat.define-light-theme(
   (
     color: (
@@ -30,10 +30,10 @@ $angular-skeleton-theme: mat.define-light-theme(
   )
 );
 
- 
+
 @include mat.all-component-themes($angular-skeleton-theme);
 
- 
+
 
 html,
 body {
@@ -42,4 +42,7 @@ body {
 body {
   margin: 0;
   font-family: "Bangers", cursive;
- }
+}
+.mat-mdc-text-field-wrapper {
+  background-color: #fff !important;
+}

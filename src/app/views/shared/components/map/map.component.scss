@@ -1,9 +1,16 @@
+@use "src/assets/styles/colors" as colors;
 .map-container {
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 30px;
+  .filter-button {
+    background: colors.$light-black;
+    color: colors.$white;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+  }
 }
 
 .map-frame {

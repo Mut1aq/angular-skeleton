@@ -1,0 +1,28 @@
+@use "src/assets/styles/colors" as colors;
+.side-menu {
+  background-color: colors.$secondary-background-color;
+  padding: 20px;
+  width: 100%;
+
+  h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+  }
+
+  form {
+    .form-group {
+      margin-bottom: 20px;
+      label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+      mat-form-field {
+        width: 100%;
+      }
+      mat-select {
+        font-size: 1rem;
+      }
+    }
+  }
+}
