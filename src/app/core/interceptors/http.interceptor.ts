@@ -11,7 +11,7 @@ import {
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
+import { catchError, finalize, retry } from 'rxjs/operators';
 import { APIService } from '../services/api.service';
 
 @Injectable({
@@ -36,24 +36,20 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       this.api.loading$.next(true);
     }
     this.requestCount++;
+
     if (isPlatformBrowser(this.platformID))
       headersConfig = {
         Accept: 'application/json',
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         'Accept-Language': localStorage.getItem('language') ?? 'en',
       };
+
     request = req.clone({ setHeaders: headersConfig });
+
     return next.handle(request).pipe(
+      retry(1),
       catchError((err) => {
-        if (
-          (err instanceof HttpErrorResponse &&
-            err.status === HttpStatusCode.Unauthorized) ||
-          err.status === HttpStatusCode.Forbidden
-        ) {
-          this.router.navigate(['auth/login']);
-        }
-        console.log(err);
-        return throwError(() => new Error(err));
+        return this.handleError(err);
       }),
       finalize(() => {
         this.requestCount--;
@@ -62,6 +58,17 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         }
       })
     );
+  }
+
+  private handleError(err: any) {
+    if (
+      (err instanceof HttpErrorResponse &&
+        err.status === HttpStatusCode.Unauthorized) ||
+      err.status === HttpStatusCode.Forbidden
+    ) {
+      this.router.navigate(['auth/login']);
+    }
+    return throwError(() => err);
   }
 }
 export const HttpRequestInterceptorProvider = {

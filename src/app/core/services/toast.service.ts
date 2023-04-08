@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-import { HttpError } from '../shared/interfaces/http-response/http-error.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +11,21 @@ export class ToastService {
     private readonly translate: TranslateService
   ) {}
 
+  toastrOptions = {
+    timeOut: 5000,
+    closeButton: true,
+    progressBar: true,
+    enableHtml: true,
+  };
+
   showInfo(description: string) {
     let translationSubscriber$ = this.translate
       .get('common.info')
-      .subscribe((_: string) => {
+      .subscribe((translatedString: string) => {
         this.toastrService.info(
           description,
-          this.translate.instant('common.info')
+          translatedString,
+          this.toastrOptions
         );
       });
     translationSubscriber$.unsubscribe();
@@ -27,10 +34,11 @@ export class ToastService {
   showSuccess(description: string) {
     let translationSubscriber$ = this.translate
       .get('common.success')
-      .subscribe((_: string) => {
+      .subscribe((translatedString: string) => {
         this.toastrService.success(
           description,
-          this.translate.instant('common.success')
+          translatedString,
+          this.toastrOptions
         );
       });
     translationSubscriber$.unsubscribe();
@@ -39,10 +47,11 @@ export class ToastService {
   showWarning(description: string) {
     let translationSubscriber$ = this.translate
       .get('common.warning')
-      .subscribe((_: string) => {
+      .subscribe((translatedString: string) => {
         this.toastrService.warning(
           description,
-          this.translate.instant('common.warning')
+          translatedString,
+          this.toastrOptions
         );
       });
     translationSubscriber$.unsubscribe();
@@ -51,34 +60,23 @@ export class ToastService {
   showError(description: string) {
     let translationSubscriber$ = this.translate
       .get('common.error')
-      .subscribe((_: string) => {
+      .subscribe((translatedString: string) => {
         this.toastrService.error(
           description,
-          this.translate.instant('common.error')
+          translatedString,
+          this.toastrOptions
         );
       });
     translationSubscriber$.unsubscribe();
   }
 
-  _onApiError = (error: HttpError) => {
-    let translationSubscriber$ = this.translate
-      .get('common.error')
-      .subscribe((_: string) => {
-        this.showError(
-          (error?.error?.errors?.length ?? 0 > 0
-            ? error?.error?.errors?.join(',') || ''
-            : error?.error?.error) || error?.statusText
-        );
-      });
-    translationSubscriber$.unsubscribe();
-  };
-
-  _onApiSuccess = (data: any) => {
-    let translationSubscriber$ = this.translate
-      .get('common.error')
-      .subscribe((_: string) => {
-        this.showSuccess(data);
-      });
-    translationSubscriber$.unsubscribe();
+  _onApiError = (error: any) => {
+    this.showError(
+      `${
+        error?.error?.errors?.length > 0
+          ? error?.error?.errors?.join('</br></br>')
+          : error.error.error
+      }`
+    );
   };
 }

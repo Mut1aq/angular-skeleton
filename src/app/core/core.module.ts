@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpRequestInterceptorProvider } from './interceptors/token.interceptor';
+import { HttpRequestInterceptorProvider } from './interceptors/http.interceptor';
 
 @NgModule({
   declarations: [],

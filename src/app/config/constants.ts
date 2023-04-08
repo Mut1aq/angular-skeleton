@@ -5,7 +5,9 @@ export class Constants {
   public static readonly API_ENDPOINT: string = environment.API;
 
   public static readonly AUTH_PATH: string = 'auth/';
-  public static readonly POSTS_PATH: string = 'posts/';
-  public static readonly COMMENT_PATH: string = 'comments/';
   public static readonly DASHBOARD_PATH: string = 'dashboard/';
+  public static readonly MAPS_PATH: string = 'maps/';
+  public static readonly FEATURES_PATH: string = 'features/';
+  public static readonly FEATURE_COLLECTIONS_PATH: string =
+    'feature-collection/';
 }

@@ -1,18 +1,13 @@
-@use "src/assets/styles/colors" as colors;
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use "@angular/material" as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+ @use "@angular/material" as mat;
+@import "~quill/dist/quill.snow.css";
+@import 'ngx-toastr/toastr';
 @include mat.core();
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
+
+$angular-skeleton-typography: mat.define-typography-config($font-family:'Bangers, cursive');
+
+ 
 $angular-skeleton-primary: mat.define-palette(mat.$indigo-palette);
 $angular-skeleton-accent: mat.define-palette(
   mat.$pink-palette,
@@ -21,11 +16,9 @@ $angular-skeleton-accent: mat.define-palette(
   A400
 );
 
-// The warn palette is optional (defaults to red).
-$angular-skeleton-warn: mat.define-palette(mat.$red-palette);
+ $angular-skeleton-warn: mat.define-palette(mat.$red-palette);
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
+ 
 $angular-skeleton-theme: mat.define-light-theme(
   (
     color: (
@@ -33,123 +26,20 @@ $angular-skeleton-theme: mat.define-light-theme(
       accent: $angular-skeleton-accent,
       warn: $angular-skeleton-warn,
     ),
+    typography: $angular-skeleton-typography
   )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+ 
 @include mat.all-component-themes($angular-skeleton-theme);
 
-/* You can add global styles to this file, and also import other style files */
-
-//font, En
-@font-face {
-  font-family: myfont;
-  src: url(../src/assets/fonts/Georama-Regular.eot);
-}
-
-@font-face {
-  font-family: myfont;
-  src: url(../src/assets/fonts/Georama-Regular.otf);
-}
-
-@font-face {
-  font-family: myfont-bold;
-  src: url(../src/assets/fonts/Georama-Bold.otf);
-}
-
-@font-face {
-  font-family: myfont-bold;
-  src: url(../src/assets/fonts/Georama-Bold.otf);
-}
-
-//Font, Ar
-@font-face {
-  font-family: myfont-ar;
-  src: url(../src/assets/fonts/NotoSansArabic-Regular.ttf);
-}
-
-@font-face {
-  font-family: myfont-ar-bold;
-  src: url(../src/assets/fonts/NotoSansArabic-Black.ttf);
-}
-
-*:not(.material-icons, .pi, .mat-icon) {
-  font-family: myfont, myfont-ar, "Helvetica Neue", sans-serif !important;
-  font-weight: normal;
-  letter-spacing: 0.1rem;
-  font-size: 16px;
-
-  &:lang(ar) {
-    letter-spacing: unset;
-  }
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-  background-color: #f9fdff;
-}
-
-a {
-  text-decoration: solid;
-}
+ 
 
 html,
 body {
   height: 100%;
 }
-
-.tabs-container {
-  .mat-tab-labels {
-    justify-content: space-between !important;
-  }
-
-  .mat-tab-body-wrapper {
-    height: 100%;
-  }
-
-  .mat-tab-group.mat-primary {
-    height: 100%;
-  }
-}
-
-.mat-tab-group.mat-primary .mat-ink-bar,
-.mat-tab-nav-bar.mat-primary .mat-ink-bar {
-  background-color: colors.$main-color;
-}
-
-//radio button
-.mat-radio-button.mat-accent .mat-radio-inner-circle,
-.mat-radio-button.mat-accent
-  .mat-radio-ripple
-  .mat-ripple-element:not(.mat-radio-persistent-ripple),
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
-.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
-  background-color: colors.$main-color;
-}
-
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-  border-color: colors.$main-color;
-}
-
-//scroll bar
-/* width */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f9f9f9;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #cbcbcb;
-}
-
-@import "~quill/dist/quill.snow.css";
+body {
+  margin: 0;
+  font-family: "Bangers", cursive;
+ }

@@ -48,9 +48,9 @@ export const navbarData: NavbarData[] = [
     label: 'Table',
   },
   {
-    routeLink: 'statistics',
-    icon: 'bx bx-stats',
-    label: 'Statistics',
+    routeLink: 'map',
+    icon: 'bx bx-map',
+    label: 'Map',
   },
 
   {

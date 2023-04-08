@@ -18,7 +18,7 @@ export class AuthService {
     private readonly sessionService: SessionService,
     private readonly api: APIService,
     private readonly translate: TranslateService,
-    private readonly toast: ToastService
+    private readonly toastService: ToastService
   ) {}
 
   loggedIn(): boolean {
@@ -37,11 +37,8 @@ export class AuthService {
   }
 
   initLoggedInUser(tokens: { accessToken: string; refreshToken: string }) {
-    this.sessionService.removeAccessToken();
-    this.sessionService.removeRefreshToken();
-    this.sessionService.accessToken = tokens.accessToken;
-    this.sessionService.refreshToken = tokens.refreshToken;
-    this.toast.showSuccess(this.translate.instant('success.login'));
+    this.sessionService.removeTokensAndAllocateNewTokens(tokens);
+    this.toastService.showSuccess(this.translate.instant('success.login'));
   }
 
   public resetPassword(
@@ -54,6 +51,6 @@ export class AuthService {
   }
 
   public login(loginBody: LoginBody): Observable<Tokens> {
-    return this.api.post(Constants.AUTH_PATH + 'login-admin', loginBody);
+    return this.api.post(Constants.AUTH_PATH + 'login-user', loginBody);
   }
 }

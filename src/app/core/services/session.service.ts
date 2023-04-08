@@ -38,4 +38,14 @@ export class SessionService {
   removeRefreshToken() {
     localStorage.removeItem('refreshToken');
   }
+
+  removeTokensAndAllocateNewTokens(tokens: {
+    accessToken: string;
+    refreshToken: string;
+  }) {
+    this.removeAccessToken();
+    this.removeRefreshToken();
+    this.accessToken = tokens.accessToken;
+    this.refreshToken = tokens.refreshToken;
+  }
 }
