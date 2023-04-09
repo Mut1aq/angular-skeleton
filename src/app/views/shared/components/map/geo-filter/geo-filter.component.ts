@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'src/app/core/services/toast.service';
+import { ActivatedRoute } from '@angular/router';
 import { GEOLayers } from '../interfaces/geo-layers.interface';
-import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-geo-filter',
@@ -9,20 +8,13 @@ import { MapService } from '../map.service';
   styleUrls: ['./geo-filter.component.scss'],
 })
 export class GeoFilterComponent implements OnInit {
-  constructor(
-    private readonly mapService: MapService,
-    private readonly toast: ToastService
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   GEOLayers!: GEOLayers[];
   ngOnInit(): void {
-    this.mapService.getGEOLayers().subscribe({
-      next: (GEOLayers: GEOLayers[]) => {
-        this.GEOLayers = GEOLayers;
-      },
-      error: (err) => {
-        this.toast._onApiError(err);
-      },
+    this.activatedRoute.data.subscribe(({ GEOLayers }) => {
+      this.GEOLayers = GEOLayers;
+      console.log(this.GEOLayers);
     });
   }
 }

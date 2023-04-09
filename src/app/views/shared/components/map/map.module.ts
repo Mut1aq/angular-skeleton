@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { GeoFilterComponent } from './geo-filter/geo-filter.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { GEOLayersResolver } from 'src/app/core/resolvers/geo-layers.resolver';
 @NgModule({
   declarations: [MapComponent, GeoFilterComponent],
   imports: [
@@ -13,10 +14,13 @@ import { MatIconModule } from '@angular/material/icon';
       {
         path: '',
         component: MapComponent,
+        resolve: {
+          GEOLayers: GEOLayersResolver,
+        },
       },
     ]),
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
   ],
 })
-export class MapModule { }
+export class MapModule {}
