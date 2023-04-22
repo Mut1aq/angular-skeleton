@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { Translation } from '../shared/interfaces/general/translation.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
   constructor(
-    private toastrService: ToastrService,
+    private readonly toastrService: ToastrService,
     private readonly translate: TranslateService
   ) {}
 
@@ -20,11 +21,11 @@ export class ToastService {
 
   showInfo(description: string) {
     let translationSubscriber$ = this.translate
-      .get('common.info')
-      .subscribe((translatedString: string) => {
+      .get(['common.info', description])
+      .subscribe((translatedString: Translation) => {
         this.toastrService.info(
-          description,
-          translatedString,
+          translatedString[description],
+          translatedString['common.info'],
           this.toastrOptions
         );
       });
@@ -33,11 +34,11 @@ export class ToastService {
 
   showSuccess(description: string) {
     let translationSubscriber$ = this.translate
-      .get('common.success')
-      .subscribe((translatedString: string) => {
+      .get(['common.success', description])
+      .subscribe((translatedString: Translation) => {
         this.toastrService.success(
-          description,
-          translatedString,
+          translatedString[description],
+          translatedString['common.success'],
           this.toastrOptions
         );
       });
@@ -46,11 +47,11 @@ export class ToastService {
 
   showWarning(description: string) {
     let translationSubscriber$ = this.translate
-      .get('common.warning')
-      .subscribe((translatedString: string) => {
+      .get(['common.warning', description])
+      .subscribe((translatedString: Translation) => {
         this.toastrService.warning(
-          description,
-          translatedString,
+          translatedString[description],
+          translatedString['common.warning'],
           this.toastrOptions
         );
       });
@@ -59,11 +60,11 @@ export class ToastService {
 
   showError(description: string) {
     let translationSubscriber$ = this.translate
-      .get('common.error')
-      .subscribe((translatedString: string) => {
+      .get(['common.error', description])
+      .subscribe((translatedString: Translation) => {
         this.toastrService.error(
-          description,
-          translatedString,
+          translatedString[description],
+          translatedString['common.error'],
           this.toastrOptions
         );
       });
@@ -75,8 +76,16 @@ export class ToastService {
       `${
         error?.error?.errors?.length > 0
           ? error?.error?.errors?.join('</br></br>')
-          : error.error.error
+          : error.error.message || error.error.error
       }`
     );
   };
+
+  loginError() {
+    this.toastrService.error('You Have To login');
+  }
+
+  roleError() {
+    this.toastrService.error('You are not allowed to enter wanted page');
+  }
 }
