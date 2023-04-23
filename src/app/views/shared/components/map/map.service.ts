@@ -13,4 +13,10 @@ export class MapService {
   getGEOLayers(): Observable<GEOLayers[]> {
     return this.api.get<GEOLayers[]>(Constants.MAPS_PATH + 'geo-layers');
   }
+
+  getFeatureCollections(): Observable<GEOLayers[]> {
+    return this.api.get<GEOLayers[]>(
+      Constants.MAPS_PATH + Constants.FEATURE_COLLECTIONS_PATH
+    );
+  }
 }

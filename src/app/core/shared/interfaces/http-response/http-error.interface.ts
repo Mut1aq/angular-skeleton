@@ -10,6 +10,7 @@ export interface HttpError {
 }
 
 interface SubError {
-  errors: string[] | undefined;
-  error: string | undefined;
+  errors?: string[];
+  error?: string;
+  message?: string;
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { Translation } from '../shared/interfaces/general/translation.interface';
+import { HttpError } from '../shared/interfaces/http-response/http-error.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -71,12 +72,12 @@ export class ToastService {
     translationSubscriber$.unsubscribe();
   }
 
-  _onApiError = (error: any) => {
+  _onApiError = (error: HttpError) => {
     this.showError(
       `${
-        error?.error?.errors?.length > 0
+        error?.error?.errors?.length ?? 0 > 0
           ? error?.error?.errors?.join('</br></br>')
-          : error.error.message || error.error.error
+          : error.error.message || error.error.error || error.message
       }`
     );
   };

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
 import { LoginForm } from 'src/app/core/shared/interfaces/forms/login-form.interface';
+import { HttpError } from 'src/app/core/shared/interfaces/http-response/http-error.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         next: (tokens: { accessToken: string; refreshToken: string }) => {
           this.authService.initLoggedInUser(tokens);
         },
-        error: (err: any) => {
+        error: (err: HttpError) => {
           this.toast._onApiError(err);
         },
         complete: () => {
