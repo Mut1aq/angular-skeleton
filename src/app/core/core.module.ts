@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { HttpRequestInterceptorProvider } from './interceptors/http.interceptor';
+import { GuardsModule } from './guards/guards.module';
+import { HttpRequestInterceptorProvider } from './interceptors/http-request.interceptor';
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [GuardsModule],
   exports: [],
   providers: [HttpRequestInterceptorProvider],
 })

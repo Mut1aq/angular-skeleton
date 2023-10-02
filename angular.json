@@ -31,7 +31,7 @@
               "node_modules/boxicons/css/boxicons.min.css"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["quill", "leaflet"]
+            "allowedCommonJsDependencies": ["leaflet"]
           },
           "configurations": {
             "production": {

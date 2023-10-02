@@ -3,6 +3,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { Constants } from 'src/app/config/constants';
+import { DecodedToken } from '../shared/interfaces/general/decoded-token.interface';
 import { LoginBody } from '../shared/interfaces/http-requests/login.interface';
 import { ResetPasswordBody } from '../shared/interfaces/http-requests/reset-password.interface';
 import { Tokens } from '../shared/interfaces/http-response/login-response.interface';
@@ -11,7 +12,7 @@ import { APIService } from './api.service';
 import { SessionService } from './session.service';
 import { ToastService } from './toast.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(
     private readonly jwtHelper: JwtHelperService,
@@ -21,7 +22,7 @@ export class AuthService {
     private readonly toastService: ToastService
   ) {}
 
-  loggedIn(): boolean {
+  isLoggedIn(): boolean {
     if (this.sessionService.accessToken) {
       try {
         return !this.jwtHelper.isTokenExpired(this.sessionService.accessToken);
@@ -32,13 +33,20 @@ export class AuthService {
     return false;
   }
 
-  public logoutUser(): Observable<ReturnMessage> {
-    return this.api.get(Constants.AUTH_PATH + 'logout', {});
-  }
-
   initLoggedInUser(tokens: { accessToken: string; refreshToken: string }) {
     this.sessionService.removeTokensAndAllocateNewTokens(tokens);
     this.toastService.showSuccess(this.translate.instant('success.login'));
+  }
+
+  public decodeToken(prop?: string) {
+    const decodedToken = this.jwtHelper.decodeToken<DecodedToken>(
+      this.sessionService.accessToken
+    );
+    return prop ? decodedToken![prop] : decodedToken;
+  }
+
+  public logoutUser(): Observable<ReturnMessage> {
+    return this.api.get(Constants.AUTH_PATH + 'logout', {});
   }
 
   public resetPassword(
@@ -51,6 +59,6 @@ export class AuthService {
   }
 
   public login(loginBody: LoginBody): Observable<Tokens> {
-    return this.api.post(Constants.AUTH_PATH + 'login-user', loginBody);
+    return this.api.post(Constants.AUTH_PATH + 'login', loginBody);
   }
 }

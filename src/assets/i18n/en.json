@@ -62,16 +62,52 @@
     "promoInfo": "Promo Info",
     "country": "Country",
     "createdAt": "Register Date",
+    "updatedAt": "Update Date",
     "filter": "Filter",
     "comments": "Comments",
     "dragAndDrop": "Drag and Drop",
     "browseFiles": "Browse Files",
     "fileName": "Name",
     "confirmDelete": "Are You sure you want to delete this record",
-    "ok": "Ok"
+    "ok": "Ok",
+    "subject": "Subject",
+    "body": "Body",
+    "noRecords": "No Records found",
+    "paymentMethod": "Payment Method",
+    "explainYourNeeds": "Explain Your Needs",
+    "none": "None",
+    "onlineWallet": "Online Wallet",
+    "cliq": "CliQ",
+    "paypal": "Paypal",
+    "westernUnion": "Western Union",
+    "iban": "IBAN",
+    "patient": "Patient",
+    "doctor": "Doctor"
   },
   "buttons": {
     "submit": "Submit",
-    "post": "Post"
+    "post": "Post",
+    "upload": "Upload"
+  },
+  "registerDoctorForm": {
+    "specialty": "Specialty",
+    "cv": "CV",
+    "certificates": "Certificates",
+    "registerDoctorForm": "Register Doctor",
+    "yearsOfExperience": "Years of Experience"
+  },
+  "passwordContains": {
+    "uppercase": "Password must contain an uppercase letter",
+    "lowercase": "Password must contain a lowercase letter",
+    "number": "Password must contain a number",
+    "specialCharacter": "Password must contain an special character letter"
+  },
+  "adminDashboard": {
+    "cards": {
+      "totalPatients": "Patients",
+      "totalRequests": "Requests",
+      "totalUsers": "Users",
+      "usersThisMonth": "Users This Month"
+    }
   }
 }

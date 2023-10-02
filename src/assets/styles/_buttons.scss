@@ -1,0 +1,63 @@
+@use "./colors" as colors;
+@use "./padding" as padding;
+
+@mixin landing-page-btn(
+  $bg-color: colors.$main-color,
+  $text-color: colors.$snow,
+  $font-size: 1rem
+) {
+  border-radius: 4px;
+  background: $bg-color;
+  width: fit-content;
+  color: $text-color;
+  padding: 0.6rem 1.5rem;
+  font-size: $font-size;
+  &:lang(ar) {
+    font-size: 1rem;
+  }
+}
+@mixin landing-page-btn-light(
+  $bg-color: colors.$white,
+  $text-color: colors.$black,
+  $font-size: 1rem
+) {
+  border-radius: 4px;
+  background: $bg-color;
+  width: fit-content;
+  color: $text-color;
+  padding: 0.6rem 1.5rem;
+  font-size: $font-size;
+  &:lang(ar) {
+    font-size: 1rem;
+  }
+}
+
+@mixin text-btn($text-color: colors.$main-color, $font-size: 1.8em) {
+  width: fit-content;
+  color: $text-color;
+  font-size: $font-size;
+}
+
+@mixin primary-btn(
+  $bg-color: colors.$main-color,
+  $text-color: colors.$white,
+  $font-size: 1em
+) {
+  width: fit-content;
+  color: $text-color;
+  font-size: $font-size;
+  background-color: $bg-color;
+}
+
+@mixin link-btn($text-color: colors.$purple, $font-size: 1rem) {
+  width: fit-content;
+  color: $text-color;
+  font-size: $font-size;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  @mixin landing-page-btn($font-size: 1.5rem) {
+    font-size: $font-size;
+  }
+}

@@ -1,4 +1,3 @@
-export enum Role {}
-/**
- * Insert Roles
- */
+export enum Role {
+  ADMIN = 1,
+}

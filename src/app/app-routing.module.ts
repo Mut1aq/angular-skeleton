@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { canActivateAuth } from './core/guards/auth.guard';
+import { canActivateRole } from './core/guards/role.guard';
 
 const routes: Routes = [
   {
@@ -9,27 +11,32 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [canActivateAuth, canActivateRole],
     children: [
       {
         path: 'mail',
         loadChildren: () =>
-          import('./views/shared/components/mail/mail.module').then(
-            (m) => m.MailModule
+          import('./views/pages/mail/mail.module').then((m) => m.MailModule),
+      },
+      {
+        path: 'dashboard',
+        canActivate: [canActivateAuth],
+        loadChildren: () =>
+          import('./views/pages/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
           ),
       },
       {
-        path: 'table',
+        path: 'ads',
+        canActivate: [canActivateAuth],
         loadChildren: () =>
-          import('./views/shared/components/table/table.module').then(
-            (m) => m.TableModule
-          ),
+          import('./views/pages/ads/ads.module').then((m) => m.AdsModule),
       },
+
       {
         path: 'map',
         loadChildren: () =>
-          import('./views/shared/components/map/map.module').then(
-            (m) => m.MapModule
-          ),
+          import('./views/pages/map/map.module').then((m) => m.MapModule),
       },
     ],
   },

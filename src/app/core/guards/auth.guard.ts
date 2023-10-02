@@ -10,17 +10,16 @@ import { AuthService } from '../services/auth.service';
 import { SessionService } from '../services/session.service';
 import { ToastService } from '../services/toast.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthGuardService {
-  canActivate(): boolean {
-    const toastService = inject(ToastService);
-    const authService = inject(AuthService);
+  canActivate(
+    toastService: ToastService,
+    authService: AuthService,
+    sessionService: SessionService
+  ): boolean {
     const router = inject(Router);
-    const sessionService = inject(SessionService);
 
-    if (!authService.loggedIn()) {
+    if (!authService.isLoggedIn()) {
       toastService.loginError();
       sessionService.removeAccessToken();
       router.navigate(['auth/login']);
@@ -34,5 +33,9 @@ export const canActivateAuth: CanActivateFn = (
   _route: ActivatedRouteSnapshot,
   _state: RouterStateSnapshot
 ) => {
-  return inject(AuthGuardService).canActivate();
+  return inject(AuthGuardService).canActivate(
+    inject(ToastService),
+    inject(AuthService),
+    inject(SessionService)
+  );
 };

@@ -1,0 +1,65 @@
+<ng-container
+  *ngIf="
+    controlToValidate?.invalid &&
+    (controlToValidate?.dirty || controlToValidate?.touched)
+  "
+>
+  <ng-container *ngIf="controlToValidate?.errors?.['required']">
+    <div class="error-message example-full-width my-3">
+      {{
+        "validation.required"
+          | translate : { value: (translationName | translate) }
+      }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.errors?.['minlength']">
+    <div class="error-message example-full-width my-3">
+      {{
+              "validation.minLength"
+                | translate
+                  : { value: (translationName | translate), length: controlToValidate?.errors?.['minlength'].requiredLength }
+      }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.errors?.['maxlength']">
+    <div class="error-message example-full-width my-3">
+      {{
+              "validation.maxlength"
+                | translate
+                  : { value: (translationName | translate), length: controlToValidate?.errors?.['maxlength'].requiredLength }
+      }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.hasError('requiresUppercaseLetter')">
+    <div class="error-message example-full-width my-3">
+      {{ "passwordContains.uppercase" | translate }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.hasError('requiresLowercaseLetter')">
+    <div class="error-message example-full-width my-3">
+      {{ "passwordContains.lowercase" | translate }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.hasError('requiresNumbers')">
+    <div class="error-message example-full-width my-3">
+      {{ "passwordContains.number" | translate }}
+    </div>
+  </ng-container>
+  <ng-container
+    *ngIf="controlToValidate?.hasError('requiresSpecialCharacters')"
+  >
+    <div class="error-message example-full-width my-3">
+      {{ "passwordContains.specialCharacter" | translate }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.hasError('mismatch')">
+    <div class="error-message example-full-width my-3">
+      {{ "login.form.match" | translate }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="controlToValidate?.hasError('email')">
+    <div class="error-message example-full-width my-3">
+      {{ "validation.email" | translate }}
+    </div>
+  </ng-container>
+</ng-container>

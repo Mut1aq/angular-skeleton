@@ -1,0 +1,21 @@
+<section class="row w-100">
+  <div [ngClass]="{ 'col-10': showGeoFilter }" class="map-container">
+    <div class="map-frame">
+      <div id="map"></div>
+    </div>
+    <!-- <button
+      mat-raised-button
+      color="primary"
+      (click)="toggleGeoFilter()"
+      class="filter-button"
+    >
+      <mat-icon>filter_list</mat-icon>
+      Geo Filter
+    </button> -->
+  </div>
+  <!-- <div [ngClass]="{ 'col-2': showGeoFilter }">
+    <div class="filter-container" [hidden]="!showGeoFilter">
+      <app-geo-filter></app-geo-filter>
+    </div>
+  </div> -->
+</section>

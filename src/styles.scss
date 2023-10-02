@@ -1,12 +1,11 @@
- @use "@angular/material" as mat;
-@import "~quill/dist/quill.snow.css";
-@import 'ngx-toastr/toastr';
+@use "@angular/material" as mat;
+@import "ngx-toastr/toastr";
 @include mat.core();
 @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
-
-$angular-skeleton-typography: mat.define-typography-config($font-family:'Bangers, cursive');
-
+$angular-skeleton-typography: mat.define-typography-config(
+  $font-family: "Bangers, cursive",
+);
 
 $angular-skeleton-primary: mat.define-palette(mat.$indigo-palette);
 $angular-skeleton-accent: mat.define-palette(
@@ -16,8 +15,7 @@ $angular-skeleton-accent: mat.define-palette(
   A400
 );
 
- $angular-skeleton-warn: mat.define-palette(mat.$red-palette);
-
+$angular-skeleton-warn: mat.define-palette(mat.$red-palette);
 
 $angular-skeleton-theme: mat.define-light-theme(
   (
@@ -26,14 +24,11 @@ $angular-skeleton-theme: mat.define-light-theme(
       accent: $angular-skeleton-accent,
       warn: $angular-skeleton-warn,
     ),
-    typography: $angular-skeleton-typography
+    typography: $angular-skeleton-typography,
   )
 );
 
-
 @include mat.all-component-themes($angular-skeleton-theme);
-
-
 
 html,
 body {

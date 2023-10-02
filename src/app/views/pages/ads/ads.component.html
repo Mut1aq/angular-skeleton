@@ -1,0 +1,77 @@
+<div class="card-list">
+  <div class="card" *ngFor="let ad of ads">
+    <div class="delete-button" (click)="deleteAd(ad?._id!)">
+      <i class="bx bx-trash-alt"></i>
+    </div>
+    <div class="card-inner">
+      <div class="image-wrapper">
+        <img [src]="ad?.image?.url" alt="Ad Image" />
+      </div>
+      <div class="content-wrapper">
+        <span class="date">{{ ad?.expiry! | timePassed }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="card new-card">
+    <form [formGroup]="addAdForm">
+      <div class="image-wrapper">
+        <ngx-file-drop
+          [multiple]="false"
+          (onFileDrop)="dropped($event)"
+          [directory]="false"
+          accept=".jpeg, .png, .bmp, .jpg"
+        >
+          <ng-template
+            ngx-file-drop-content-tmp
+            let-openFileSelector="openFileSelector"
+          >
+            <button
+              class="mx-2 upload-button"
+              type="button"
+              (click)="openFileSelector()"
+            >
+              {{ "buttons.upload" | translate }}
+            </button>
+          </ng-template>
+        </ngx-file-drop>
+      </div>
+      <div class="content-wrapper">
+        <label for="expiryDate">Expiry Date:</label>
+        <input
+          type="date"
+          formControlName="expiry"
+          id="expiryDate"
+          [min]="today"
+          [max]="twentyThreeDaysFromNow"
+          name="expiryDate"
+        />
+      </div>
+
+      <div class="upload-table" *ngIf="file">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="text-secondary">
+                {{ "common.fileName" | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody class="upload-name-style">
+            <tr>
+              <td>
+                <strong>{{ file.name }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button
+          type="submit"
+          (click)="onSubmit()"
+          [disabled]="!addAdForm.valid"
+        >
+          Add Ad
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

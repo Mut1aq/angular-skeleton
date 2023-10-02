@@ -1,0 +1,125 @@
+@use "src/assets/styles/colors" as colors;
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  width: 200px;
+  margin: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease-in-out;
+
+  i {
+    color: #f76f73;
+    font-size: 2rem;
+  }
+}
+
+.delete-button:hover {
+  color: #ff4d4d;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.card:hover .card-inner {
+  background-color: #f8f8f8;
+}
+
+.image-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .image-wrapper img {
+  transform: scale(1.05);
+}
+
+.content-wrapper {
+  padding: 10px;
+  text-align: center;
+}
+
+.date {
+  font-size: 14px;
+  color: #888;
+}
+
+.new-card {
+  border: 1px dashed #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 20% auto;
+  padding: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: colors.$light-black;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

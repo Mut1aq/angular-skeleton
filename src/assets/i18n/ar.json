@@ -59,6 +59,7 @@
     "promoCode": "رمز ترويجي",
     "promoInfo": "معلومات الترويج",
     "createdAt": "تاريخ التسجيل",
+    "updatedAt": "تاريخ اخر تعديل",
     "filter": "تصفية النتائج",
     "reset": "اعاده",
     "periodStart": "بدايه الفتره",
@@ -67,10 +68,45 @@
     "browseFiles": "تصفح ملفات",
     "fileName": "الاسم",
     "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا السجل",
-    "ok": "نعم"
+    "ok": "نعم",
+    "subject": "العنوان",
+    "body": "نص الايميل",
+    "noRecords": "لم يتم العثور على أي سجلات",
+    "paymentMethod": "طريقة الدفع",
+    "explainYourNeeds": "الملاحظات",
+    "none": "لا يوجد",
+    "onlineWallet": "محفظة الكترونية",
+    "cliq": "كليك",
+    "paypal": "باي بال",
+    "westernUnion": "وسترن يونيون",
+    "iban": "اي بان",
+    "patient": "مريض",
+    "doctor": "دكتور"
   },
   "buttons": {
     "submit": "ارسال",
-    "post": "نشر"
+    "post": "نشر",
+    "upload": "رفع"
+  },
+  "registerDoctorForm": {
+    "specialty": "الاختصاص",
+    "cv": "السيرة الذاتية",
+    "certificates": "الشهادات",
+    "registerDoctorForm": "تسجيل دكتور",
+    "yearsOfExperience": "سنوات الخبرة"
+  },
+  "passwordContains": {
+    "uppercase": "يجب ان تحتوي كلمة السر على حرف كبير",
+    "lowercase": "يجب ان تحتوي كلمة السر على حرف صغير",
+    "number": "يجب ان تحتوي كلمة السر على رقم",
+    "specialCharacter": "يجب ان تحتوي كلمة السر على رمز"
+  },
+  "adminDashboard": {
+    "cards": {
+      "totalPatients": "المرضى",
+      "totalRequests": "الطلبات",
+      "totalUsers": "المستخدمين",
+      "usersThisMonth": "المستخدمين هذا الشهر"
+    }
   }
 }

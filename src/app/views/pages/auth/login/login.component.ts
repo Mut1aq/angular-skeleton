@@ -1,11 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Renderer2, OnDestroy, Inject } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ToastService } from 'src/app/core/services/toast.service';
-import { LoginForm } from 'src/app/core/shared/interfaces/forms/login-form.interface';
 import { HttpError } from 'src/app/core/shared/interfaces/http-response/http-error.interface';
 @Component({
   selector: 'app-login',
@@ -13,9 +12,6 @@ import { HttpError } from 'src/app/core/shared/interfaces/http-response/http-err
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  loginForm!: FormGroup<LoginForm>;
-  subscriptions: Subscription[] = [];
-
   constructor(
     private readonly fb: NonNullableFormBuilder,
     private readonly authService: AuthService,
@@ -25,19 +21,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     private readonly router: Router
   ) {}
 
+  loginForm = this.fb.group({
+    email: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.email],
+    ],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });
+  subscriptions: Subscription[] = [];
+
   ngOnInit(): void {
     this.renderer.addClass(this.document.body, 'body-background');
-    this.initLoginForm();
-  }
-
-  initLoginForm(): void {
-    this.loginForm = this.fb.group({
-      email: [
-        '',
-        [Validators.required, Validators.minLength(3), Validators.email],
-      ],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
   }
 
   onSubmit(): void {
